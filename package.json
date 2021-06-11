@@ -9,7 +9,10 @@
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
     "serve": "webpack serve",
-    "cypress-open": "./node_modules/bin/cypress open"
+    "cypress": "cypress open",
+    "cypress:local": "concurrently \"yarn serve\" \"yarn cypress\"",
+    "cypress:run": "cypress run",
+    "cypress:ci": "start-server-and-test \"yarn serve\" http://localhost:3000 \"yarn cypress:run\""
   },
   "author": "Confik L",
   "license": "MIT",
@@ -25,6 +28,7 @@
     "@babel/preset-react": "^7.13.13",
     "@webpack-cli/generators": "^2.2.0",
     "babel-loader": "^8.2.2",
+    "concurrently": "^6.2.0",
     "cypress": "^7.5.0",
     "html-webpack-plugin": "^5.3.1",
     "webpack": "^5.38.1",

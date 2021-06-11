@@ -1,29 +1,50 @@
 import React, { useState } from "react"
 
 const login = () => {
+
+    const [state, setState] = useState({
+        username: '',
+        password: ''
+    })
+
+    const handleChange = (e, type) => {
+        type === 'username' ?
+            setState({ ...state, username: e.target.value })
+            :
+            setState({ ...state, password: e.target.value })
+    }
+
     return (
         <div style={styles.root}>
             <h3>Login</h3>
             <form style={styles.form}>
                 <label>
-                    Email:
+                    Username:
                     <input
                         type="text"
-                        name="name"
+                        name="user name"
+                        autoFocus
+                        className='form-input-email'
                         style={styles.inputText}
+                        value={state.username}
+                        onChange={evt => handleChange(evt, 'username')}
                     />
                 </label>
                 <label>
                     Password:
                     <input
-                        type="text"
-                        name="name"
+                        type="password"
+                        name="passowrd"
+                        className='form-input-password'
                         style={styles.inputText}
+                        value={state.passowrd}
+                        onChange={evt => handleChange(evt, 'password')}
                     />
                 </label>
                 <input
                     type="submit"
                     value="Submit"
+                    className='form-input-submit'
                     style={styles.button}
                 />
             </form>
